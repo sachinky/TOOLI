@@ -50,11 +50,11 @@ class list
 	}
 
 	public void printList() {
-	    Node currentLink = head;
+	    Node current = head;
 	    System.out.print("List: ");
-	    while(currentLink != null) {
-		    System.out.println(currentLink.read());
-		    currentLink = currentLink.next;
+	    while(current != null) {
+		    System.out.println(current.read());
+		    current = current.next;
 	    }
 	    System.out.println("");
     }
