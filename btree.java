@@ -22,9 +22,9 @@ class Node
 	}
 }
 
-public btree
+class btree
 {
-	private Node root;
+	Node root;
 	
 	public void btree()
 	{
@@ -33,7 +33,7 @@ public btree
 	
 	public void insert(int d)
 	{
-		node t=root;
+		Node t=root;
 		if(root!=null)
 		{
 		
@@ -54,8 +54,21 @@ public btree
 		
 	}
 	
-	public void delete(int d)
-	{
-		
-	}
+	public void print()
+    {
+        inorder(root);
+    }
+    public void inorder(Node node)
+    {
+        if(node!=null)
+        {
+            inorder(node.c1);
+            System.out.println(node.data);
+            inorder(node.c2);
+        }
+        else
+            return;
+    }
+
 }
+
