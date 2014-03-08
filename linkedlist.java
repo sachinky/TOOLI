@@ -14,9 +14,9 @@ class Node
 		data =d;
 	}
 	
-	public void print()
+	public int read()
 	{
-		System.out.println(data);
+		return(data);
 	}
 }
 
@@ -42,29 +42,18 @@ class list
 		
 	}
 	
-	public Node delete(int d)
+	public Node delete()
 	{
-		Node node=head;
-		while(node.next.next!=null)
-		{
-			if(node.next.data==d)
-			{
-				Node p=node.next;
-				Node t=node.next.next;
-				node.next=t;
-				return p;
-			}
-			else
-				node=node.next;
-		}
-		return null;
+		Node temp = head;
+	    head = head.next;
+	    return temp;
 	}
 
 	public void printList() {
 	    Node currentLink = head;
 	    System.out.print("List: ");
 	    while(currentLink != null) {
-		    currentLink.print();
+		    System.out.println(currentLink.read());
 		    currentLink = currentLink.next;
 	    }
 	    System.out.println("");
@@ -83,10 +72,11 @@ class LinkListTest {
 	    list1.insert(5);
 
 	    list1.printList();
-		int i=5;
+	
 	    while(!list1.isEmpty()) {
-		    Node deletedLink = list1.delete(i--);
-		    System.out.print("deleted: "+deletedLink.data);
+		    Node d = list1.delete();
+		   
+		    System.out.println("deleted: "+ d.read());
 		   
 	    }
 	    list1.printList();
