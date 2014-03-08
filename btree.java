@@ -25,34 +25,38 @@ class Node
 class btree
 {
 	Node root;
+	static int count;
 	
 	public void btree()
 	{
 		root=null;
 	}
+	 
+	public void insert(int data)
+	{ 
+    	root = insert(root, data); 
+  	} 
 	
-	public void insert(int d)
-	{
-		Node t=root;
-		if(root!=null)
-		{
-		
-			while(t!=null)
-			{
-				if(d>t.data)
-					t=t.c1;
-				else
-				t=t.c2;
-			}
-		}
-		else
-		{
-			root=new Node(d);
-			root.c1=null;
-			root.c2=null;
-		}
-		
-	}
+	private Node insert(Node node, int data) 
+	{ 
+    	if (node==null) 
+    	{ 
+      		node = new Node(data); 
+    	} 
+    	else 
+    	{ 
+      		if (data <= node.data) 
+      		{ 
+        		node.c1 = insert(node.c1, data); 
+      		} 
+      		else 
+      		{ 
+        		node.c2 = insert(node.c2, data); 
+      		} 
+    	}
+
+    	return(node); 
+  	} 
 	
 	public void print()
     {
@@ -72,3 +76,17 @@ class btree
 
 }
 
+class BtreeTest {
+    public static void main(String[] args) {
+	    btree tree = new btree();
+
+	    tree.insert(6);
+	    tree.insert(9);
+	    tree.insert(3);
+	    tree.insert(7);
+	    tree.insert(5);
+
+	    tree.print();\\prints in inorder traversal
+
+    }
+}
